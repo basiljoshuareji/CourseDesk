@@ -1,0 +1,69 @@
+
+<h2>Courses</h2>
+
+<div>
+  <button
+    (click)="selectCategory('all')"
+    [class.active]="selectedCategory() === 'all'">
+    All
+  </button>
+
+  @for (category of categories; track category) {
+    <button
+      (click)="selectCategory(category)"
+      [class.active]="selectedCategory() === category">
+      {{ category | uppercase }}
+    </button>
+  }
+</div>
+
+<br>
+
+
+<label for="hours">Maximum hours:</label>
+
+<input
+  type="number"
+  id="hours"
+  min="0"
+  [value]="maxHours() ?? ''"
+  #hoursInput
+  (input)="updateMaxHours(hoursInput.value)"
+>
+
+<hr>
+
+
+<p>
+  Showing {{ shown().length }} of {{ courses().length }} courses.
+  {{ shownHours() }} hours in total.
+  Saved: {{ savedIds().length }}
+</p>
+
+
+<ul class="courses">
+  @for (course of shown(); track course.id) {
+    <li class="box">
+      <h3>{{ course.title }}</h3>
+
+      <p>Category: {{ course.category | uppercase }}</p>
+      <p>Level: {{ course.level }}</p>
+      <p>Duration: {{ course.hours }} hours</p>
+      <p>{{ course.enrolled }} of {{ course.seats }} seats taken</p>
+
+      @if (course.seats === course.enrolled) {
+        <p>This course is full.</p>
+      }
+
+      <a [routerLink]="['/courses', course.id]">View details</a>
+
+      <button class = "button" (click)="toggleSaved(course.id)">
+        {{ savedIds().includes(course.id) ? 'Unsave' : 'Save' }}
+      </button>
+
+
+    }
+   @empty {
+    <li>No courses found.</li>
+  }
+</ul>

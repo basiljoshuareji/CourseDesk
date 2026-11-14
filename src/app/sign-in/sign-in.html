@@ -1,0 +1,26 @@
+<main class="sign-in-page">
+  <section class="sign-in-card" >
+    <h2>COURSEDESK ACCOUNT</h2>
+    <h4 id="sign-in-title">Sign in</h4>
+
+
+    <form (submit)="$event.preventDefault(); signIn(nameInput.value)">
+      <label for="name">Your name</label>
+      <input
+        #nameInput
+        id="name"
+        name="name"
+        type="text"
+      >
+      <button type="submit">Sign in</button>
+    </form>
+
+    @if (signedInName()) {
+      <p>Welcome {{ signedInName() | uppercase }}</p>
+      <button (click)="toEnrollments()"> Click here to see your Enrollments </button>
+    }
+
+    
+  </section>
+
+</main>

@@ -1,0 +1,24 @@
+
+
+@if (!isEnrolled()){
+    <h3>Enroll here</h3>
+    <button (click) = "toSignIn()">Go to Sign In section</button>
+}
+@else {
+    <h2>Saved courses</h2>
+
+    @if (savedCourses().length === 0) {
+    <p>No saved courses yet.</p>
+    } @else {
+    <ul>
+        @for (course of savedCourses(); track course.id) {
+        <li>{{ course.title }} — {{ course.hours }} hours</li>
+        }
+    </ul>
+    }
+
+}
+
+
+
+

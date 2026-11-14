@@ -1,0 +1,43 @@
+:root {
+    box-sizing: border-box;
+    background-color: #f5f7fa;
+}
+
+
+.head {
+    display : flex;
+    flex-direction : row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    padding : 10px;
+    margin: 5px ;
+    border : 1px black;
+}
+
+footer {
+    
+    width : 100%;
+    bottom :0;
+    background-color: #1f2933;
+    color: white;
+    text-align: center;
+    padding : 10px
+}
+
+.links {
+  padding: 10px;
+  margin : 16px;
+  border: 1px;
+  border-radius: 5px;
+  background: #117d73;
+  color: whitesmoke;
+  cursor: pointer;
+  font-weight: 70;
+}
+
+a {
+    text-decoration: none;
+}  
